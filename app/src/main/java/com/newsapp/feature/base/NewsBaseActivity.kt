@@ -6,6 +6,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpPresenter
 import com.hannesdorfmann.mosby3.mvp.MvpView
 import com.newsapp.R
 import com.newsapp.utils.util.NewsProgressDialogHelper
+import kotlinx.android.synthetic.main.activity_main.*
 
 abstract class NewsBaseActivity<V : MvpView, P : MvpPresenter<V>> : MvpActivity<V, P>(), NewsBaseView {
     private var dialogHelper: NewsProgressDialogHelper? = null
@@ -35,5 +36,9 @@ abstract class NewsBaseActivity<V : MvpView, P : MvpPresenter<V>> : MvpActivity<
             dialogHelper?.destroy()
         }
         super.onDestroy()
+    }
+
+    override fun hideSwipeRefreshLayout() {
+        swipeRefreshLayout.isRefreshing = false
     }
 }

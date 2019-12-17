@@ -1,6 +1,7 @@
 package com.newsapp.feature.repository
 
 import android.content.Context
+import android.widget.Toast
 import androidx.room.Room
 import com.newsapp.feature.shared.model.Articles
 import com.newsapp.network.NewsApiService
@@ -71,5 +72,7 @@ class NewsApiRepository @Inject constructor() {
                     emitter.onError(Throwable("Error API call"))
             }, { error ->
                 emitter.onError(error)
+                Toast.makeText(context, "Something went wrong. Please check your internet connection" +
+                        " and try again.", Toast.LENGTH_LONG).show()
             })
 }

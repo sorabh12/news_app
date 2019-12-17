@@ -11,9 +11,11 @@ class NewsPresenter @Inject constructor(private val newsInteractor: NewsInteract
             newsInteractor.getArticlesApiRepository().subscribe({ articles ->
                 view.populateArticles(articles)
                 view.hideLoading()
+                view.hideSwipeRefreshLayout()
             }, { error ->
                 Log.d("Xais", error.localizedMessage)
                 view.hideLoading()
+                view.hideSwipeRefreshLayout()
             })
         }
     }
